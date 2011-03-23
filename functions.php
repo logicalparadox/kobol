@@ -10,7 +10,7 @@
  * If you're building a theme based on toolbox, use a find and replace
  * to change 'toolbox' to the name of your theme in all the template files
  */
-load_theme_textdomain( 'toolbox', TEMPLATEPATH . '/languages' );
+load_theme_textdomain( 'kobol', TEMPLATEPATH . '/languages' );
 
 $locale = get_locale();
 $locale_file = TEMPLATEPATH . "/languages/$locale.php";
@@ -27,7 +27,7 @@ if ( ! isset( $content_width ) )
  * This theme uses wp_nav_menu() in one location.
  */
 register_nav_menus( array(
-	'primary' => __( 'Primary Menu', 'toolbox' ),
+	'primary' => __( 'Primary Menu', 'kobol' ),
 ) );
 
 /**
