@@ -1,0 +1,67 @@
+.clearfix() {
+  &:after {
+    content: "."; display: block; height: 0; clear: both; visibility: hidden;
+  }
+}
+
+.rounded_corners(@radius: 5px) {
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    border-radius: @radius;
+}
+
+.rounded_corners_custom(@tr: 5px, @tl: 5px, @bl: 5px, @br: 5px) {
+    -webkit-border-radius: @tr @tl @bl @br;
+    -moz-border-radius: @tr @tl @bl @br;
+    border-radius:@tr @tl @bl @br;
+}
+
+.box_shadow(@x: 0px, @y: 0px, @feather: 0px, @bcolor: #000000) {
+        box-shadow: @x @y @feather @bcolor;
+        -moz-box-shadow:  @x @y @feather @bcolor;
+        -webkit-box-shadow: @x @y @feather @bcolor;
+}
+
+.box_shadow_inset(@x: 0px, @y: 0px, @feather: 0px, @bcolor: #000000) {
+        box-shadow: inset @x @y @feather @bcolor;
+        -moz-box-shadow: inset @x @y @feather @bcolor;
+        -webkit-box-shadow: inset @x @y @feather @bcolor;
+}
+
+.background_gradient(@default, @from, @to) {
+        background-color: @default;
+        background-image: -moz-linear-gradient(100% 100% 90deg, @to, @from);
+        background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@from), to(@to));
+}
+
+.standard_button() {
+  display: inline-block;
+  text-decoration: none;
+  border: 1px solid #aaa;
+  font-family: Helvetica;
+  .rounded_corners(3px);
+  .background_gradient(#fff, #fff, #ddd);
+  font-size: 12px;
+  height: 23px;
+  line-height: 22px;
+  padding: 0 8px;
+  margin: 6px 6px 6px 0;
+  text-shadow: 1px 1px 1px #fff;
+  font-weight: bold;
+  color:  #444;
+  cursor: pointer;
+  &:hover {
+    .box_shadow(0,0,3px,rgba(0,0,0,0.4));
+  }
+  &:active {
+    .background_gradient(#ddd, #ddd, #fff);
+  }
+}
+
+
+// Theme
+
+.widget_box() {
+  background-color: #fff;
+  .box_shadow(0px,5px,8px,rgba(0,0,0,0.6));
+}

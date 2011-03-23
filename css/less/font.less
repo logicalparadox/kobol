@@ -1,0 +1,130 @@
+@baseline-fontsize: 13px;
+@baseline-lineheight: 18px;
+
+/*
+Baseline - a designer framework
+Copyright (C) 2009 Stephane Curzi, ProjetUrbain.com
+Creative Commons Attribution-Share Alike 3.0 License
+version 0.5
+
+Not completely converted to less
+*/
+
+/******************** Baseline grid: 13/18px ********************/
+body { 
+  font-size: 75%; 
+  line-height: 1.5; /*12/18*/ 
+}
+
+h1, h2, h3, h4, h5, h6 { 
+  position: relative; 
+}
+
+h1, h2 { 
+  line-height: @baseline-lineheight * 2; 
+  margin-bottom: @baseline-lineheight; 
+}
+
+h1, h2, h3, h4 { 
+  margin-top: @baseline-lineheight; 
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+h3, h4, h5, h6 { 
+  line-height: @baseline-lineheight; 
+}
+
+h1 { // 41
+  font-size: @baseline-lineheight + 18; 
+  top: 5px; 
+}
+
+h2 { // 36
+  font-size: 28px; 
+  top: 8px; 
+}
+
+h3 { // 23 
+  font-size: 22px; 
+  top: 1px; 
+}
+
+h4 { // 20
+  font-size: 18px; 
+  top: 2px; 
+}
+
+h5 { // 19
+  font-size: 15px; 
+  top: 4px; 
+}
+
+h6 { // 18
+  font-size: @baseline-fontsize; 
+  top: @baseline-lineheight - @baseline-fontsize; 
+}
+
+p, pre, address { 
+  font-size: @baseline-fontsize; 
+  line-height: @baseline-lineheight; 
+  position: relative; 
+  top: @baseline-lineheight - @baseline-fontsize; 
+}
+
+small { 
+  font-size: 11px;
+}
+
+abbr, code, kbd,
+samp, small, var { 
+  line-height: 15px; 
+}
+
+ul, ol, dl, dialog { 
+ font-size: @baseline-fontsize; 
+ line-height: @baseline-lineheight; 
+ position: relative; 
+ top: @baseline-lineheight - @baseline-fontsize; 
+ margin-top: @baseline-lineheight; 
+ margin-bottom: @baseline-lineheight; 
+}
+
+li ul, li ol, ul ul, ol ol { 
+  top: 0; 
+  margin-top: 0; 
+  margin-bottom: 0; 
+}
+
+li h1, li h2, li h3,
+li h4, li h5, li h6,
+li p { 
+  top: 0; 
+}
+
+form, legend, label { 
+  font-size: @baseline-fontsize; 
+  line-height: @baseline-lineheight; 
+}
+
+legend { 
+  position: relative; 
+  top: @baseline-lineheight - @baseline-fontsize; 
+}
+
+table { 
+  font-size: @baseline-fontsize; 
+}
+
+caption { 
+  font-size: @baseline-fontsize; 
+  line-height: @baseline-lineheight; 
+  position: relative; 
+}
+
+hr { 
+  position: relative; 
+  height: 4px; 
+  margin: @baseline-lineheight 0 (@baseline-lineheight - 4) 0; 
+}
