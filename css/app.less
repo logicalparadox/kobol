@@ -15,9 +15,31 @@
 @accent2: #E3E9F2; // Light background.. should be used for widgets or headers.
 @accent3: #9DB8E0; // Slight darker, used for some buttons.
 
-#wpadminbar {
-  ul {
-    top: auto !important;
+#page {
+  .row();
+  
+  header#branding {
+    .clearfix();
+    
+    hgroup {
+      .grid_12();
+    }
+    
+    nav#access {
+      .grid_12();
+    }
+  }
+  
+  #main {
+    .clearfix();
+    
+    #primary {
+      .grid_8();
+    }
+    
+    #secondary{
+      .grid_4();
+    }
   }
 }
 
