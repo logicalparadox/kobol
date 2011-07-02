@@ -17,6 +17,9 @@ $locale_file = TEMPLATEPATH . "/languages/$locale.php";
 if ( is_readable( $locale_file ) )
 	require_once( $locale_file );
 
+
+require_once ( get_stylesheet_directory() . '/_inc/admin/kobol-options.php' );
+
 /**
  * Set the content width based on the theme's design and stylesheet.
  */
