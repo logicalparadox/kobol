@@ -48,7 +48,7 @@ function kobol_sticky_nav_support() {
      wp_enqueue_script('kobol_sticky_nav');
   }
 }
-
+add_action('init', 'kobol_sticky_nav_support');
 
 function kobol_stick_nav_class($classes) {
 	$classes[] = 'sticky-nav';
