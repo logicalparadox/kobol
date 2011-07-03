@@ -92,9 +92,6 @@ body {
   float: left;
   display: inline;
 }
-#page header#branding #nav-placeholder #nav-wrap {
-  z-index: 1000;
-}
 #page header#branding #nav-placeholder #nav-wrap:after {
   content: ".";
   display: block;
@@ -138,6 +135,15 @@ body {
   overflow: hidden;
   float: left;
   display: inline;
+}
+/*
+ * Start Wordpress defaults
+ */
+/*
+ * End Wordpress defaults
+ */
+body.sticky-nav #nav-wrap {
+  z-index: 1000;
 }
 body.sticky-nav #nav-wrap.stuck {
   width: auto !important;

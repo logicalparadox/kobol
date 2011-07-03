@@ -20,81 +20,17 @@ body {
   background-color: #aaa;
 }
 
-#page {
-  .row();
-  min-height: 1000px;
-  background-color: #fff;
-  
-  header#branding {
-    .clearfix();
-    
-    hgroup {
-      .grid_12();
-    }
-    
-    #nav-placeholder {
-      .grid_12();
-      
-      #nav-wrap {
-        .clearfix();
-        z-index: 1000;
+@import "less/defaults/layout.less";
 
-        nav#access {
-          .clearfix();
-          width: 940px;
-          margin: 0px auto !important;
-          float: none;
-        }
-      }
-      
-    }
-  }
-  
-  #main {
-    .clearfix();
-    margin-top: 8px;
-    margin-bottom: 8px;
-    
-    #primary {
-      .grid_8();
-    }
-    
-    #secondary{
-      .grid_4();
-    }
-  }
-}
+/*
+ * Start Wordpress defaults
+ */
 
 
-body.sticky-nav {
-  
-  #nav-wrap {
-    
-    &.stuck {
-      width: auto !important;
-      margin: 0px !important;
-      position: fixed;
-      top: 0px;
-      left: 0px;
-      right: 0px;
-    }
-    
-  }
-  
-  &.admin-bar {
-    #nav-wrap {
-      
-      &.stuck {
-        width: auto !important;
-        margin: 0px !important;
-        position: fixed;
-        top: 28px;
-        left: 0px;
-        right: 0px;
-      }
-      
-    }
-  }
-}
 
+/*
+ * End Wordpress defaults
+ */
+
+@import "less/defaults/sticky-nav.less";
 @import "less/media";

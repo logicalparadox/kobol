@@ -1,0 +1,30 @@
+body.sticky-nav {
+  
+  #nav-wrap {
+    z-index: 1000;
+    &.stuck {
+      width: auto !important;
+      margin: 0px !important;
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+    }
+    
+  }
+  
+  &.admin-bar {
+    #nav-wrap {
+      
+      &.stuck {
+        width: auto !important;
+        margin: 0px !important;
+        position: fixed;
+        top: 28px;
+        left: 0px;
+        right: 0px;
+      }
+      
+    }
+  }
+}
