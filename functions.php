@@ -17,8 +17,11 @@ $locale_file = TEMPLATEPATH . "/languages/$locale.php";
 if ( is_readable( $locale_file ) )
 	require_once( $locale_file );
 
+// load theme options
+$kobol_options = get_option('kobol_theme_options');
 
-require_once ( get_stylesheet_directory() . '/_inc/admin/kobol-options.php' );
+
+require_once ( get_template_directory() . '/_inc/admin/kobol-options.php' );
 
 
 /** Tell WordPress to run kobol_setup() when the 'after_setup_theme' hook is run. */
@@ -69,7 +72,8 @@ endif; //if ! kobol_setup
 
 // Adds support for sticky navigation
 function kobol_sticky_nav_support() {
-  if ( !is_admin() ) { // instruction to only load if it is not the admin area
+  global $kobol_options;
+  if ( !is_admin() && $kobol_options['sticky_menu_options'] == 'yes' ) { // instruction to only load if it is not the admin area
      // register your script location, dependencies and version
      wp_register_script('kobol_sticky_nav',
          get_bloginfo('template_directory') . '/js/kobol-stickynav.js',

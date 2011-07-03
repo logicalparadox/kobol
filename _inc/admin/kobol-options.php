@@ -22,30 +22,14 @@ function kobol_options_add_page() {
 /**
  * Create arrays for our select and radio options
  */
-$kobol_options_array = array(
-	'0' => array(
-		'value' =>	'0',
-		'label' => __( 'Zero', 'sampletheme' )
+$sticky_menu_options = array(
+	'no' => array(
+		'value' => 'no',
+		'label' => __( 'No', 'kobol' )
 	),
-	'1' => array(
-		'value' =>	'1',
-		'label' => __( 'One', 'sampletheme' )
-	),
-	'2' => array(
-		'value' => '2',
-		'label' => __( 'Two', 'sampletheme' )
-	),
-	'3' => array(
-		'value' => '3',
-		'label' => __( 'Three', 'sampletheme' )
-	),
-	'4' => array(
-		'value' => '4',
-		'label' => __( 'Four', 'sampletheme' )
-	),
-	'5' => array(
-		'value' => '3',
-		'label' => __( 'Five', 'sampletheme' )
+	'yes' => array(
+		'value' => 'yes',
+		'label' => __( 'Yes (top)', 'kobol' )
 	)
 );
 
@@ -54,7 +38,7 @@ $kobol_options_array = array(
  * Create the options page
  */
 function kobol_options_do_page() {
-	global $select_options, $radio_options;
+	global $sticky_menu_options;
 
 	if ( ! isset( $_REQUEST['settings-updated'] ) )
 		$_REQUEST['settings-updated'] = false;
@@ -72,7 +56,41 @@ function kobol_options_do_page() {
 	
 				<table class="form-table">
 				
-				</table>
+				
+				
+				  <?php
+  				/**
+  				 * Display options for sticky menu
+  				 */
+  				?>
+  				<tr valign="top"><th scope="row"><?php _e( 'Enable Sticky Menus?', 'kobol' ); ?></th>
+						<td>
+							<fieldset><legend class="screen-reader-text"><span><?php _e( 'Enable Sticky Menus?', 'kobol' ); ?></span></legend>
+							<?php
+								if ( ! isset( $checked ) )
+									$checked = '';
+								foreach ( $sticky_menu_options as $option ) {
+									$radio_setting = $options['sticky_menu_options'];
+	
+									if ( '' != $sticky_menu_options ) {
+										if ( $options['sticky_menu_options'] == $option['value'] ) {
+											$checked = "checked=\"checked\"";
+										} else {
+											$checked = '';
+										}
+									}
+									?>
+									<label class="description"><input type="radio" name="kobol_theme_options[sticky_menu_options]" value="<?php esc_attr_e( $option['value'] ); ?>" <?php echo $checked; ?> /> <?php echo $option['label']; ?></label><br />
+									<?php
+								}
+							?>
+							</fieldset>
+						</td>
+					</tr>				
+  			</table>
+  			<p class="submit">
+					<input type="submit" class="button-primary" value="<?php _e( 'Save Options', 'sampletheme' ); ?>" />
+				</p>
 			</form>
 	</div>
 	
@@ -84,28 +102,13 @@ function kobol_options_do_page() {
  * Sanitize and validate input. Accepts an array, return a sanitized array.
  */
 function kobol_options_validate( $input ) {
-	global $select_options, $radio_options;
+	global $sticky_menu_options;
 
-	// Our checkbox value is either 0 or 1
-	if ( ! isset( $input['option1'] ) )
-		$input['option1'] = null;
-	$input['option1'] = ( $input['option1'] == 1 ? 1 : 0 );
-
-	// Say our text option must be safe text with no HTML tags
-	$input['sometext'] = wp_filter_nohtml_kses( $input['sometext'] );
-
-	// Our select option must actually be in our array of select options
-	if ( ! array_key_exists( $input['selectinput'], $select_options ) )
-		$input['selectinput'] = null;
-
-	// Our radio option must actually be in our array of radio options
-	if ( ! isset( $input['radioinput'] ) )
-		$input['radioinput'] = null;
-	if ( ! array_key_exists( $input['radioinput'], $radio_options ) )
-		$input['radioinput'] = null;
-
-	// Say our textarea option must be safe text with the allowed tags for posts
-	$input['sometextarea'] = wp_filter_post_kses( $input['sometextarea'] );
+	// Sticky Menu Options
+	if ( ! isset( $input['sticky_menu_options'] ) )
+		$input['sticky_menu_options'] = null;
+	if ( ! array_key_exists( $input['sticky_menu_options'], $sticky_menu_options ) )
+		$input['sticky_menu_options'] = null;
 
 	return $input;
 }

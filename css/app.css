@@ -61,11 +61,15 @@ textarea {
   clear: left;
   overflow: auto;
 }
+body {
+  background-color: #aaa;
+}
 #page {
   width: 960px;
   margin: 0 auto;
   overflow: hidden;
   min-height: 1000px;
+  background-color: #fff;
 }
 #page header#branding:after {
   content: ".";
