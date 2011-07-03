@@ -1,7 +1,7 @@
 <?php
 /**
- * Template Name: Full-width, no sidebar
- * Description: A full-width template with no sidebar
+ * Template Name: Full-width, no sidebar/title
+ * Description: A full-width template with no sidebar or title
  *
  * @package WordPress
  * @subpackage Kobol
@@ -14,7 +14,7 @@ get_header(); ?>
 
 				<?php the_post(); ?>
 
-				<?php get_template_part( 'content', 'page' ); ?>
+				<?php get_template_part( 'content', 'page-no-title' ); ?>
 
 				<?php comments_template( '', true ); ?>
 

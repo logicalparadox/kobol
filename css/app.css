@@ -129,6 +129,13 @@ body {
   float: left;
   display: inline;
 }
+#page #main #primary.full-width {
+  width: 940px;
+  margin: 0 10px;
+  overflow: hidden;
+  float: left;
+  display: inline;
+}
 #page #main #secondary {
   width: 300px;
   margin: 0 10px;
