@@ -1,0 +1,11 @@
+
+
+h2. Sticky Menus
+
+h3. Customizing Menus
+
+In order to utilize on page scrolling, you must turn on custom menu classes. On the "Menu" screen select "Screen Options" and enable "CSS Classes".
+
+h3. Same Page Menu Items
+
+Links to content on the same page must have the class 'scroll-to' (without quotes).

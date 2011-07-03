@@ -1,7 +1,13 @@
 jQuery(function($) {
   $(document).ready(function() {
-     var $nav = $('nav#access');
+     var $ph = $('#nav-placeholder'),
+         $nav = $('#nav-wrap', $ph),
          navOffset = $nav.offset();
+     
+     $ph.css({
+       'height': $nav.height()
+     });    
+     
      $nav.addClass('sticky-nav');
      
      $(window).scroll(function(){

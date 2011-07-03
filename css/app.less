@@ -29,13 +29,28 @@
       .grid_12();
     }
     
-    nav#access {
+    #nav-placeholder {
       .grid_12();
+      
+      #nav-wrap {
+        .clearfix();
+        z-index: 1000;
+
+        nav#access {
+          .clearfix();
+          width: 940px;
+          margin: 0px auto !important;
+          float: none;
+        }
+      }
+      
     }
   }
   
   #main {
     .clearfix();
+    margin-top: 8px;
+    margin-bottom: 8px;
     
     #primary {
       .grid_8();
@@ -50,7 +65,7 @@
 
 body.sticky-nav {
   
-  nav#access {
+  #nav-wrap {
     
     &.stuck {
       width: auto !important;
@@ -64,7 +79,7 @@ body.sticky-nav {
   }
   
   &.admin-bar {
-    nav#access {
+    #nav-wrap {
       
       &.stuck {
         width: auto !important;

@@ -46,14 +46,24 @@
 			<hgroup>
 				<h1 id="site-title"><span><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
 				<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
+				
+				<?php
+				  if ( get_header_image() ) : ?>
+				  <img src="<?php header_image(); ?>" width="<?php echo HEADER_IMAGE_WIDTH; ?>" height="<?php echo HEADER_IMAGE_HEIGHT; ?>" alt="" />
+				<?php endif; ?>  
+	      
 			</hgroup>
 
-			<nav id="access" role="navigation">
-				<h1 class="section-heading"><?php _e( 'Main menu', 'toolbox' ); ?></h1>
-				<div class="skip-link screen-reader-text"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'toolbox' ); ?>"><?php _e( 'Skip to content', 'toolbox' ); ?></a></div>
-
-				<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
-			</nav><!-- #access -->
+      <div id="nav-placeholder">
+        <div id="nav-wrap">
+    			<nav id="access" role="navigation">
+    				<h1 class="section-heading"><?php _e( 'Main menu', 'toolbox' ); ?></h1>
+    				<div class="skip-link screen-reader-text"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'toolbox' ); ?>"><?php _e( 'Skip to content', 'toolbox' ); ?></a></div>
+    
+    				<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+    			</nav><!-- #access -->
+    		</div>
+    	</div>
 	</header><!-- #branding -->
 
 

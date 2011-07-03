@@ -81,12 +81,38 @@ textarea {
   float: left;
   display: inline;
 }
-#page header#branding nav#access {
+#page header#branding #nav-placeholder {
   width: 940px;
   margin: 0 10px;
   overflow: hidden;
   float: left;
   display: inline;
+}
+#page header#branding #nav-placeholder #nav-wrap {
+  z-index: 1000;
+}
+#page header#branding #nav-placeholder #nav-wrap:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+#page header#branding #nav-placeholder #nav-wrap nav#access {
+  width: 940px;
+  margin: 0px auto !important;
+  float: none;
+}
+#page header#branding #nav-placeholder #nav-wrap nav#access:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+#page #main {
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 #page #main:after {
   content: ".";
@@ -109,7 +135,7 @@ textarea {
   float: left;
   display: inline;
 }
-body.sticky-nav nav#access.stuck {
+body.sticky-nav #nav-wrap.stuck {
   width: auto !important;
   margin: 0px !important;
   position: fixed;
@@ -117,7 +143,7 @@ body.sticky-nav nav#access.stuck {
   left: 0px;
   right: 0px;
 }
-body.sticky-nav.admin-bar nav#access.stuck {
+body.sticky-nav.admin-bar #nav-wrap.stuck {
   width: auto !important;
   margin: 0px !important;
   position: fixed;

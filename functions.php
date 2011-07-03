@@ -20,23 +20,54 @@ if ( is_readable( $locale_file ) )
 
 require_once ( get_stylesheet_directory() . '/_inc/admin/kobol-options.php' );
 
-/**
- * Set the content width based on the theme's design and stylesheet.
- */
-if ( ! isset( $content_width ) )
-	$content_width = 640; /* pixels */
 
-/**
- * This theme uses wp_nav_menu() in one location.
- */
-register_nav_menus( array(
-	'primary' => __( 'Primary Menu', 'kobol' ),
-) );
+/** Tell WordPress to run kobol_setup() when the 'after_setup_theme' hook is run. */
+add_action( 'after_setup_theme', 'kobol_setup' );
 
+if ( ! function_exists( 'kobol_setup' ) ):
 /**
- * Adds support "sticky" navigation
- */
+  * Sets up theme defaults
+**/
 
+function kobol_setup() {
+  
+  // Set the content width based on the theme's design and stylesheet.
+  if ( ! isset( $content_width ) )
+  	$content_width = 640; /* pixels */
+  
+  // This theme uses wp_nav_menu() in one location.
+  register_nav_menus( array(
+  	'primary' => __( 'Primary Menu', 'kobol' ),
+  ) );
+  
+  // This theme uses post thumbnails
+  add_theme_support( 'post-thumbnails' );
+  	
+  // Add default posts and comments RSS feed links to head
+  add_theme_support( 'automatic-feed-links' );
+  
+  // Add support for the Aside and Gallery Post Formats
+  add_theme_support( 'post-formats', array( 'aside', 'gallery' ) );
+  
+  // This theme allows users to set a custom background
+  add_custom_background();
+  
+  // No CSS, just IMG call. The %s is a placeholder for the theme template directory URI.
+  	if ( ! defined( 'HEADER_IMAGE' ) )
+  		define( 'HEADER_IMAGE', '%s/images/headers/kobol_default.jpg' );
+  	  // Sample image modified from: http://www.c0d3m0nk3y.com/images/gallery/communication-node.png
+  		
+	// The height and width of your custom header. You can hook into the theme's own filters to change these values.
+		// Add a filter to twentyten_header_image_width and twentyten_header_image_height to change these values.
+		define( 'HEADER_IMAGE_WIDTH', apply_filters( 'twentyten_header_image_width', 940 ) );
+		define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'twentyten_header_image_height', 200 ) );
+  
+}
+endif; //if ! kobol_setup
+
+
+
+// Adds support for sticky navigation
 function kobol_sticky_nav_support() {
   if ( !is_admin() ) { // instruction to only load if it is not the admin area
      // register your script location, dependencies and version
@@ -55,17 +86,6 @@ function kobol_stick_nav_class($classes) {
 	return $classes;
 }
 add_filter('body_class','kobol_stick_nav_class');
-
-
-/**
- * Add default posts and comments RSS feed links to head
- */
-add_theme_support( 'automatic-feed-links' );
-
-/**
- * Add support for the Aside and Gallery Post Formats
- */
-add_theme_support( 'post-formats', array( 'aside', 'gallery' ) );
 
 /**
  * Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
