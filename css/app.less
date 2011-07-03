@@ -15,9 +15,13 @@
 @accent2: #E3E9F2; // Light background.. should be used for widgets or headers.
 @accent3: #9DB8E0; // Slight darker, used for some buttons.
 
+
+
+
+
 #page {
   .row();
-  
+  min-height: 1000px;
   header#branding {
     .clearfix();
     
@@ -39,6 +43,38 @@
     
     #secondary{
       .grid_4();
+    }
+  }
+}
+
+
+body.sticky-nav {
+  
+  nav#access {
+    
+    &.stuck {
+      width: auto !important;
+      margin: 0px !important;
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+    }
+    
+  }
+  
+  &.admin-bar {
+    nav#access {
+      
+      &.stuck {
+        width: auto !important;
+        margin: 0px !important;
+        position: fixed;
+        top: 28px;
+        left: 0px;
+        right: 0px;
+      }
+      
     }
   }
 }

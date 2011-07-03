@@ -65,6 +65,7 @@ textarea {
   width: 960px;
   margin: 0 auto;
   overflow: hidden;
+  min-height: 1000px;
 }
 #page header#branding:after {
   content: ".";
@@ -107,6 +108,22 @@ textarea {
   overflow: hidden;
   float: left;
   display: inline;
+}
+body.sticky-nav nav#access.stuck {
+  width: auto !important;
+  margin: 0px !important;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+}
+body.sticky-nav.admin-bar nav#access.stuck {
+  width: auto !important;
+  margin: 0px !important;
+  position: fixed;
+  top: 28px;
+  left: 0px;
+  right: 0px;
 }
 /*
  * media queries for responsive design
