@@ -1,7 +1,11 @@
 Kobol's Last Gleaming
 =====================
 
-Kobol is where it all began. The 
+Kobol is where it all began. This is meant to be a theme framework; avoid customizing to ensure consistent update path.
+
+### Installation
+
+For use with child-theme: [Children of Kobol](http://github.com/incatern/children-of-kobol)
 
 ### Features
 
@@ -11,6 +15,7 @@ Kobol is where it all began. The
 * Support for single page sites
 
 ### Roadmap
+* Allow for disable of grid defaults
 * Grid-based content columns shortcodes
 
 Sticky Menus
