@@ -52,6 +52,7 @@
 				<h1 id="site-title"><span><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
 				<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
 				
+				<?php if ( $kobol_options['kobol_header_display'] == 'all' || ( $kobol_options['kobol_header_display'] == 'homepage' && is_front_page() ) ) : ?>
 				<div id="hcontent">
   				<?php
   				  if ( $kobol_options['kobol_header_options'] == 'widget' ) : ?>
@@ -68,6 +69,7 @@
   				
   				<?php endif; ?>  
 	      </div>
+	      <?php endif; ?>
 			</hgroup>
 
       <div id="nav-placeholder">

@@ -22,17 +22,6 @@ function kobol_options_add_page() {
 /**
  * Create arrays for our select and radio options
  */
-$kobol_sticky_menu_options = array(
-	'no' => array(
-		'value' => 'no',
-		'label' => __( 'No', 'kobol' )
-	),
-	'yes' => array(
-		'value' => 'yes',
-		'label' => __( 'Yes (top)', 'kobol' )
-	)
-);
-
 $kobol_header_options = array(
 	'static' => array(
 		'value' => 'static',
@@ -48,12 +37,35 @@ $kobol_header_options = array(
 	)
 );
 
+$kobol_header_display = array(
+	'all' => array(
+		'value' => 'all',
+		'label' => __( 'All pages', 'kobol' )
+	),
+	'homepage' => array(
+		'value' => 'homepage',
+		'label' => __( 'Only on home page', 'kobol' )
+	)
+);
+
+$kobol_sticky_menu_options = array(
+	'no' => array(
+		'value' => 'no',
+		'label' => __( 'No', 'kobol' )
+	),
+	'yes' => array(
+		'value' => 'yes',
+		'label' => __( 'Yes (top)', 'kobol' )
+	)
+);
 
 /**
  * Create the options page
  */
 function kobol_options_do_page() {
-	global $kobol_sticky_menu_options, $kobol_header_options;
+	global $kobol_sticky_menu_options, 
+	  $kobol_header_options,
+	  $kobol_header_display;
 
 	if ( ! isset( $_REQUEST['settings-updated'] ) )
 		$_REQUEST['settings-updated'] = false;
@@ -84,7 +96,7 @@ function kobol_options_do_page() {
   							foreach ( $kobol_header_options as $option ) {
   								$radio_setting = $options['kobol_header_options'];
   
-  								if ( '' != $kobol_sticky_menu_options ) {
+  								if ( '' != $kobol_header_options ) {
   									if ( $options['kobol_header_options'] == $option['value'] ) {
   										$checked = "checked=\"checked\"";
   									} else {
@@ -99,7 +111,36 @@ function kobol_options_do_page() {
   						</fieldset>
   					</td>
   				</tr>	
-
+          
+          <?php
+          /**
+  				 * Display options for header
+  				 */
+  				?>
+  				<tr valign="top"><th scope="row"><?php _e( 'Header Display', 'kobol' ); ?></th>
+  					<td>
+  						<fieldset><legend class="screen-reader-text"><span><?php _e( 'Header Display', 'kobol' ); ?></span></legend>
+  						<?php
+  							if ( ! isset( $checked ) )
+  								$checked = '';
+  							foreach ( $kobol_header_display as $option ) {
+  								$radio_setting = $options['kobol_header_display'];
+  
+  								if ( '' != $kobol_header_display ) {
+  									if ( $options['kobol_header_display'] == $option['value'] ) {
+  										$checked = "checked=\"checked\"";
+  									} else {
+  										$checked = '';
+  									}
+  								}
+  								?>
+  								<label class="description"><input type="radio" name="kobol_theme_options[kobol_header_display]" value="<?php esc_attr_e( $option['value'] ); ?>" <?php echo $checked; ?> /> <?php echo $option['label']; ?></label><br />
+  								<?php
+  							}
+  						?>
+  						</fieldset>
+  					</td>
+  				</tr>	
 				
 				  <?php
   				/**
@@ -147,13 +188,21 @@ function kobol_options_do_page() {
  * Sanitize and validate input. Accepts an array, return a sanitized array.
  */
 function kobol_options_validate( $input ) {
-	global $kobol_sticky_menu_options, $kobol_header_options;
+	global $kobol_sticky_menu_options, 
+	  $kobol_header_options,
+	  $kobol_header_display;
 
   // Header Options
   if ( ! isset( $input['kobol_header_options'] ) )
   	$input['kobol_header_options'] = null;
   if ( ! array_key_exists( $input['kobol_header_options'], $kobol_header_options ) )
   	$input['kobol_header_options'] = null;
+  	
+  // Header Display
+  if ( ! isset( $input['kobol_header_display'] ) )
+  	$input['kobol_header_display'] = null;
+  if ( ! array_key_exists( $input['kobol_header_display'], $kobol_header_display ) )
+  	$input['kobol_header_display'] = null;
 
 	// Sticky Menu Options
 	if ( ! isset( $input['kobol_sticky_menu_options'] ) )
