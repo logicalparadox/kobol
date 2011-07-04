@@ -10,13 +10,20 @@ For use with child-theme: [Children of Kobol](http://github.com/incatern/childre
 ### Features
 
 * HTML5
-* CSS is written in Less.js and comes with a custom grid framework.
+* CSS is written in Less.js and comes with a custom grid framework and functions.
 * Sticky Menus
 * Support for single page sites
 
 ### Roadmap
+
 * Allow for disable of grid defaults
 * Grid-based content columns shortcodes
+
+Header Customization
+--------------------
+
+Kobol gives you the ability to customize the header. You can either have the Wordpress included static image, a widget box (ex: jQuery slider), or nothing at all. Make change on the options page.
+
 
 Sticky Menus
 ------------
