@@ -229,11 +229,7 @@ a:hover { color: #036; }
 -------------------------------------------------------------- */
 
 #access {
-	background: #eee;
-	display: block;
-	float: left;
-	margin: 0 auto 1em;
-	width: 100%;
+
 }
 #access ul {
 	list-style: none;

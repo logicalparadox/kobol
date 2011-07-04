@@ -1,42 +1,66 @@
+body {
+  margin: 0px;
+}
+
 #page {
-  .row();
-  min-height: 1000px;
-  background-color: #fff;
-  
   header#branding {
     .clearfix();
-    
+    background-color: #ddd;
     hgroup {
-      .grid_12();
+      .row();
+      
+      #site-title {
+        .grid_12();
+        margin-top: 16px;
+        background-color: #fff;
+      }
+      
+      #site-description {
+        .grid_12();
+        margin-bottom: 8px;
+        background-color: #fff;
+      }
+      
+      #hcontent {
+        .grid_12();
+        margin-bottom: 8px;
+      }
     }
     
     #nav-placeholder {
-      .grid_12();
       
       #nav-wrap {
         .clearfix();
-
+        background-color: #ccc;
         nav#access {
-          .clearfix();
-          width: 940px;
-          margin: 0px auto !important;
-          float: none;
+          .row();
+          
+          .menu {
+            .grid_12();
+          }
         }
-      }
-      
+      } 
     }
   }
   
   #main {
     .clearfix();
-    margin-top: 8px;
-    margin-bottom: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background-color: #eee;
     
     #primary {
-      .grid_8();
-      
+      .row();
+      min-height: 800px;
       &.full-width {
-        .grid_12();
+        
+        #content {
+          .grid_12();
+        }
+      }
+      
+      #content {
+        .grid_8();
       }
     }
     

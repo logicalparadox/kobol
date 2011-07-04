@@ -88,7 +88,11 @@ function kobol_sticky_nav_support() {
 add_action('init', 'kobol_sticky_nav_support');
 
 function kobol_stick_nav_class($classes) {
-	$classes[] = 'sticky-nav';
+  global $kobol_options;
+  
+  if ($kobol_options['kobol_sticky_menu_options'] == 'yes') {
+	  $classes[] = 'sticky-nav';
+	}
 	return $classes;
 }
 add_filter('body_class','kobol_stick_nav_class');

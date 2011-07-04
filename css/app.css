@@ -64,12 +64,11 @@ textarea {
 body {
   background-color: #aaa;
 }
-#page {
-  width: 960px;
-  margin: 0 auto;
-  overflow: hidden;
-  min-height: 1000px;
-  background-color: #fff;
+body {
+  margin: 0px;
+}
+#page header#branding {
+  background-color: #ddd;
 }
 #page header#branding:after {
   content: ".";
@@ -79,18 +78,38 @@ body {
   visibility: hidden;
 }
 #page header#branding hgroup {
-  width: 940px;
-  margin: 0 10px;
+  width: 960px;
+  margin: 0 auto;
   overflow: hidden;
-  float: left;
-  display: inline;
 }
-#page header#branding #nav-placeholder {
+#page header#branding hgroup #site-title {
   width: 940px;
   margin: 0 10px;
   overflow: hidden;
   float: left;
   display: inline;
+  margin-top: 16px;
+  background-color: #fff;
+}
+#page header#branding hgroup #site-description {
+  width: 940px;
+  margin: 0 10px;
+  overflow: hidden;
+  float: left;
+  display: inline;
+  margin-bottom: 8px;
+  background-color: #fff;
+}
+#page header#branding hgroup #hcontent {
+  width: 940px;
+  margin: 0 10px;
+  overflow: hidden;
+  float: left;
+  display: inline;
+  margin-bottom: 8px;
+}
+#page header#branding #nav-placeholder #nav-wrap {
+  background-color: #ccc;
 }
 #page header#branding #nav-placeholder #nav-wrap:after {
   content: ".";
@@ -100,20 +119,21 @@ body {
   visibility: hidden;
 }
 #page header#branding #nav-placeholder #nav-wrap nav#access {
-  width: 940px;
-  margin: 0px auto !important;
-  float: none;
+  width: 960px;
+  margin: 0 auto;
+  overflow: hidden;
 }
-#page header#branding #nav-placeholder #nav-wrap nav#access:after {
-  content: ".";
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
+#page header#branding #nav-placeholder #nav-wrap nav#access .menu {
+  width: 940px;
+  margin: 0 10px;
+  overflow: hidden;
+  float: left;
+  display: inline;
 }
 #page #main {
-  margin-top: 8px;
-  margin-bottom: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background-color: #eee;
 }
 #page #main:after {
   content: ".";
@@ -123,14 +143,20 @@ body {
   visibility: hidden;
 }
 #page #main #primary {
-  width: 620px;
+  width: 960px;
+  margin: 0 auto;
+  overflow: hidden;
+  min-height: 800px;
+}
+#page #main #primary.full-width #content {
+  width: 940px;
   margin: 0 10px;
   overflow: hidden;
   float: left;
   display: inline;
 }
-#page #main #primary.full-width {
-  width: 940px;
+#page #main #primary #content {
+  width: 620px;
   margin: 0 10px;
   overflow: hidden;
   float: left;
