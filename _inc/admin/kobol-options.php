@@ -22,7 +22,7 @@ function kobol_options_add_page() {
 /**
  * Create arrays for our select and radio options
  */
-$sticky_menu_options = array(
+$kobol_sticky_menu_options = array(
 	'no' => array(
 		'value' => 'no',
 		'label' => __( 'No', 'kobol' )
@@ -33,12 +33,27 @@ $sticky_menu_options = array(
 	)
 );
 
+$kobol_header_options = array(
+	'static' => array(
+		'value' => 'static',
+		'label' => __( 'Static Image', 'kobol' )
+	),
+	'widget' => array(
+		'value' => 'widget',
+		'label' => __( 'Widget Header', 'kobol' )
+	),
+	'none' => array(
+		'value' => 'none',
+		'label' => __( 'None', 'kobol' )
+	)
+);
+
 
 /**
  * Create the options page
  */
 function kobol_options_do_page() {
-	global $sticky_menu_options;
+	global $kobol_sticky_menu_options, $kobol_header_options;
 
 	if ( ! isset( $_REQUEST['settings-updated'] ) )
 		$_REQUEST['settings-updated'] = false;
@@ -55,8 +70,36 @@ function kobol_options_do_page() {
 				<?php $options = get_option( 'kobol_theme_options' ); ?>
 	
 				<table class="form-table">
-				
-				
+				  <?php
+  				/**
+  				 * Display options for header
+  				 */
+  				?>
+  				<tr valign="top"><th scope="row"><?php _e( 'Header Options', 'kobol' ); ?></th>
+  					<td>
+  						<fieldset><legend class="screen-reader-text"><span><?php _e( 'Header Options', 'kobol' ); ?></span></legend>
+  						<?php
+  							if ( ! isset( $checked ) )
+  								$checked = '';
+  							foreach ( $kobol_header_options as $option ) {
+  								$radio_setting = $options['kobol_header_options'];
+  
+  								if ( '' != $kobol_sticky_menu_options ) {
+  									if ( $options['kobol_header_options'] == $option['value'] ) {
+  										$checked = "checked=\"checked\"";
+  									} else {
+  										$checked = '';
+  									}
+  								}
+  								?>
+  								<label class="description"><input type="radio" name="kobol_theme_options[kobol_header_options]" value="<?php esc_attr_e( $option['value'] ); ?>" <?php echo $checked; ?> /> <?php echo $option['label']; ?></label><br />
+  								<?php
+  							}
+  						?>
+  						</fieldset>
+  					</td>
+  				</tr>	
+
 				
 				  <?php
   				/**
@@ -69,24 +112,26 @@ function kobol_options_do_page() {
 							<?php
 								if ( ! isset( $checked ) )
 									$checked = '';
-								foreach ( $sticky_menu_options as $option ) {
-									$radio_setting = $options['sticky_menu_options'];
+								foreach ( $kobol_sticky_menu_options as $option ) {
+									$radio_setting = $options['kobol_sticky_menu_options'];
 	
-									if ( '' != $sticky_menu_options ) {
-										if ( $options['sticky_menu_options'] == $option['value'] ) {
+									if ( '' != $kobol_sticky_menu_options ) {
+										if ( $options['kobol_sticky_menu_options'] == $option['value'] ) {
 											$checked = "checked=\"checked\"";
 										} else {
 											$checked = '';
 										}
 									}
 									?>
-									<label class="description"><input type="radio" name="kobol_theme_options[sticky_menu_options]" value="<?php esc_attr_e( $option['value'] ); ?>" <?php echo $checked; ?> /> <?php echo $option['label']; ?></label><br />
+									<label class="description"><input type="radio" name="kobol_theme_options[kobol_sticky_menu_options]" value="<?php esc_attr_e( $option['value'] ); ?>" <?php echo $checked; ?> /> <?php echo $option['label']; ?></label><br />
 									<?php
 								}
 							?>
 							</fieldset>
 						</td>
-					</tr>				
+					</tr>	
+					
+								
   			</table>
   			<p class="submit">
 					<input type="submit" class="button-primary" value="<?php _e( 'Save Options', 'sampletheme' ); ?>" />
@@ -102,13 +147,19 @@ function kobol_options_do_page() {
  * Sanitize and validate input. Accepts an array, return a sanitized array.
  */
 function kobol_options_validate( $input ) {
-	global $sticky_menu_options;
+	global $kobol_sticky_menu_options, $kobol_header_options;
+
+  // Header Options
+  if ( ! isset( $input['kobol_header_options'] ) )
+  	$input['kobol_header_options'] = null;
+  if ( ! array_key_exists( $input['kobol_header_options'], $kobol_header_options ) )
+  	$input['kobol_header_options'] = null;
 
 	// Sticky Menu Options
-	if ( ! isset( $input['sticky_menu_options'] ) )
-		$input['sticky_menu_options'] = null;
-	if ( ! array_key_exists( $input['sticky_menu_options'], $sticky_menu_options ) )
-		$input['sticky_menu_options'] = null;
+	if ( ! isset( $input['kobol_sticky_menu_options'] ) )
+		$input['kobol_sticky_menu_options'] = null;
+	if ( ! array_key_exists( $input['kobol_sticky_menu_options'], $kobol_sticky_menu_options ) )
+		$input['kobol_sticky_menu_options'] = null;
 
 	return $input;
 }

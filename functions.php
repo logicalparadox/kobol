@@ -73,7 +73,9 @@ endif; //if ! kobol_setup
 // Adds support for sticky navigation
 function kobol_sticky_nav_support() {
   global $kobol_options;
-  if ( !is_admin() && $kobol_options['sticky_menu_options'] == 'yes' ) { // instruction to only load if it is not the admin area
+  
+  // instruction to only load if it is not the admin area and enabled
+  if ( !is_admin() && $kobol_options['kobol_sticky_menu_options'] == 'yes' ) { 
      // register your script location, dependencies and version
      wp_register_script('kobol_sticky_nav',
          get_bloginfo('template_directory') . '/js/kobol-stickynav.js',
@@ -104,6 +106,16 @@ add_filter( 'wp_page_menu_args', 'kobol_page_menu_args' );
  * Register widgetized area and update sidebar with default widgets
  */
 function kobol_widgets_init() {
+	register_sidebar( array (
+		'name' => __( 'Header', 'kobol' ),
+		'id' => 'header',
+		'description' => __( 'Replaces static image in header if enabled in Kobol Options', 'kobol' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => "</aside>",
+		'before_title' => '<h1 class="widget-title">',
+		'after_title' => '</h1>',
+	) );
+	
 	register_sidebar( array (
 		'name' => __( 'Sidebar 1', 'kobol' ),
 		'id' => 'sidebar-1',

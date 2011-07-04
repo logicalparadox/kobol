@@ -3,6 +3,11 @@
  * @package WordPress
  * @subpackage Toolbox
  */
+ 
+ // load theme options
+ $kobol_options = get_option('kobol_theme_options');
+ 
+ 
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -48,8 +53,18 @@
 				<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
 				
 				<?php
-				  if ( get_header_image() ) : ?>
-				  <img src="<?php header_image(); ?>" width="<?php echo HEADER_IMAGE_WIDTH; ?>" height="<?php echo HEADER_IMAGE_HEIGHT; ?>" alt="" />
+				  if ( $kobol_options['kobol_header_options'] == 'widget' ) : ?>
+				    <div id="header-widgets">
+				      <?php dynamic_sidebar( 'header' ); ?>
+				    </div>
+				<?php
+			    elseif ( ( $kobol_options['kobol_header_options'] == 'static' || ! $kobol_options['kobol_header_options'] ) && get_header_image() ) : ?>
+				    <img src="<?php header_image(); ?>" width="<?php echo HEADER_IMAGE_WIDTH; ?>" height="<?php echo HEADER_IMAGE_HEIGHT; ?>" alt="" />
+				<?php
+				  elseif ( $kobol_options['kobol_header_options'] == 'none' ) : ?>
+				    <?php //do nothing 
+				    ?>
+				
 				<?php endif; ?>  
 	      
 			</hgroup>
