@@ -20,10 +20,12 @@ if ( is_readable( $locale_file ) )
 // load theme options
 $kobol_options = get_option('kobol_theme_options');
 
-
+// Admin Functions
 require_once ( get_template_directory() . '/_inc/admin/kobol-options.php' );
 require_once ( get_template_directory() . '/_inc/admin/kobol-webfonts.php' );
 
+// Front End Functions
+require_once ( get_template_directory() . '/_inc/webfonts.php' );
 
 /** Tell WordPress to run kobol_setup() when the 'after_setup_theme' hook is run. */
 add_action( 'after_setup_theme', 'kobol_setup' );

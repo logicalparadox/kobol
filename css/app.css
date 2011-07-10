@@ -172,6 +172,9 @@ body {
 /*
  * Start Wordpress defaults
  */
+#site-title {
+  font-family: 'Loved by the King', Helvetica;
+}
 /*
  * End Wordpress defaults
  */

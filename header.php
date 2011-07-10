@@ -11,6 +11,7 @@
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
+<?php kobol_print_webfonts_js(); ?>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <title><?php
 	/*
