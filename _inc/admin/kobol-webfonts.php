@@ -51,6 +51,18 @@ function kobol_webfonts_do_page() {
   					</td>
   				</tr>
 				
+				  <?php
+  				/**
+  				 * List of Google Supported Fonts
+  				 */
+  				?>
+  				<tr valign="top"><th scope="row"><?php _e( 'Google Webfonts Fonts', 'kobol' ); ?></th>
+  					<td>
+  						<textarea id="kobol_webfonts_options[kobol_webfonts_gfonts]" class="large-text" cols="50" rows="10" name="kobol_webfonts_options[kobol_webfonts_gfonts]"><?php echo esc_textarea( $options['kobol_webfonts_gfonts'] ); ?></textarea>
+  						<label class="description" for="kobol_webfonts_options[kobol_webfonts_gfonts]"><?php _e( 'Enter one font per line.', 'kobol' ); ?></label>
+  					</td>
+  				</tr>
+				
   			</table>
   			<p class="submit">
 					<input type="submit" class="button-primary" value="<?php _e( 'Save Options', 'sampletheme' ); ?>" />
@@ -70,6 +82,8 @@ function kobol_webfonts_validate( $input ) {
   		$input['kobol_webfonts_enabled'] = null;
   	$input['kobol_webfonts_enabled'] = ( $input['kobol_webfonts_enabled'] == 1 ? 1 : 0 );
   	
+  // Say our text option must be safe text with no HTML tags
+  $input['kobol_webfonts_gfonts'] = wp_filter_nohtml_kses( $input['kobol_webfonts_gfonts'] );
   	
 	return $input;
 }
