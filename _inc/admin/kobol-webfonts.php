@@ -58,14 +58,38 @@ function kobol_webfonts_do_page() {
   				?>
   				<tr valign="top"><th scope="row"><?php _e( 'Google Webfonts Fonts', 'kobol' ); ?></th>
   					<td>
-  						<textarea id="kobol_webfonts_options[kobol_webfonts_gfonts]" class="large-text" cols="50" rows="10" name="kobol_webfonts_options[kobol_webfonts_gfonts]"><?php echo esc_textarea( $options['kobol_webfonts_gfonts'] ); ?></textarea>
+  						<textarea id="kobol_webfonts_options[kobol_webfonts_gfonts]" class="large-text" cols="50" rows="5" name="kobol_webfonts_options[kobol_webfonts_gfonts]"><?php echo esc_textarea( $options['kobol_webfonts_gfonts'] ); ?></textarea>
   						<label class="description" for="kobol_webfonts_options[kobol_webfonts_gfonts]"><?php _e( 'Enter one font per line.', 'kobol' ); ?></label>
+  					</td>
+  				</tr>
+  				
+  				<?php
+  				/**
+  				 * List of Custom Fonts
+  				 */
+  				?>
+  				<tr valign="top"><th scope="row"><?php _e( 'Custom Fonts', 'kobol' ); ?></th>
+  					<td>
+  						<textarea id="kobol_webfonts_options[kobol_webfonts_cfonts]" class="large-text" cols="50" rows="5" name="kobol_webfonts_options[kobol_webfonts_cfonts]"><?php echo esc_textarea( $options['kobol_webfonts_cfonts'] ); ?></textarea>
+  						<label class="description" for="kobol_webfonts_options[kobol_webfonts_cfonts]"><?php _e( 'Enter one font per line.', 'kobol' ); ?></label>
+  					</td>
+  				</tr>
+  				
+  				<?php
+  				/**
+  				 * List of Custom CSS Files
+  				 */
+  				?>
+  				<tr valign="top"><th scope="row"><?php _e( 'Custom Fonts CSS Files', 'kobol' ); ?></th>
+  					<td>
+  						<textarea id="kobol_webfonts_options[kobol_webfonts_cfonts_css]" class="large-text" cols="50" rows="5" name="kobol_webfonts_options[kobol_webfonts_cfonts_css]"><?php echo esc_textarea( $options['kobol_webfonts_cfonts_css'] ); ?></textarea>
+  						<label class="description" for="kobol_webfonts_options[kobol_webfonts_cfonts_css]"><?php _e( 'Enter one font per line. Use tag [theme_url] to reference css files from theme. Example: <strong>[theme_url]/css/fonts.css</strong>', 'kobol' ); ?></label>
   					</td>
   				</tr>
 				
   			</table>
   			<p class="submit">
-					<input type="submit" class="button-primary" value="<?php _e( 'Save Options', 'sampletheme' ); ?>" />
+					<input type="submit" class="button-primary" value="<?php _e( 'Save Options', 'kobol' ); ?>" />
 				</p>
 			</form>
 	</div>
@@ -84,6 +108,8 @@ function kobol_webfonts_validate( $input ) {
   	
   // Say our text option must be safe text with no HTML tags
   $input['kobol_webfonts_gfonts'] = wp_filter_nohtml_kses( $input['kobol_webfonts_gfonts'] );
+  $input['kobol_webfonts_cfonts'] = wp_filter_nohtml_kses( $input['kobol_webfonts_cfonts'] );
+  $input['kobol_webfonts_cfonts_css'] = wp_filter_nohtml_kses( $input['kobol_webfonts_cfonts_css'] );
   	
 	return $input;
 }
