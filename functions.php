@@ -22,6 +22,7 @@ $kobol_options = get_option('kobol_theme_options');
 
 
 require_once ( get_template_directory() . '/_inc/admin/kobol-options.php' );
+require_once ( get_template_directory() . '/_inc/admin/kobol-webfonts.php' );
 
 
 /** Tell WordPress to run kobol_setup() when the 'after_setup_theme' hook is run. */
